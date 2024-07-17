@@ -2,14 +2,22 @@ group 'net.touchcapture.qr.flutterqr'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.0'
+    ext.kotlin_version = "1.7.10"
     repositories {
         google()
         mavenCentral()
+        maven { url=uri('https://maven.aliyun.com/nexus/content/groups/public/') }
+        maven { url=uri('https://maven.aliyun.com/repository/google') }
+        maven { url=uri('https://maven.aliyun.com/repository/gradle-plugin') }
+        maven { url=uri('https://maven.aliyun.com/repository/jcenter') }
+        maven { url=uri('https://maven.aliyun.com/repository/central') }
+        maven { url=uri('https://maven.aliyun.com/repository/public') }
+        maven { url=uri('https://download.flutter.io') }
+        maven { url=uri('https://storage.flutter-io.cn/download.flutter.io') }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath("com.android.tools.build:gradle:8.5.1")
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -18,6 +26,14 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url=uri('https://maven.aliyun.com/nexus/content/groups/public/') }
+        maven { url=uri('https://maven.aliyun.com/repository/google') }
+        maven { url=uri('https://maven.aliyun.com/repository/gradle-plugin') }
+        maven { url=uri('https://maven.aliyun.com/repository/jcenter') }
+        maven { url=uri('https://maven.aliyun.com/repository/central') }
+        maven { url=uri('https://maven.aliyun.com/repository/public') }
+        maven { url=uri('https://download.flutter.io') }
+        maven { url=uri('https://storage.flutter-io.cn/download.flutter.io') }
     }
 }
 
@@ -25,7 +41,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 33
+    namespace "net.touchcapture.qr.flutterqr"
+    compileSdk 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -33,7 +50,7 @@ android {
     defaultConfig {
         // minSdkVersion is determined by Native View.
         minSdkVersion 20
-        targetSdkVersion 33
+        targetSdkVersion 34
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -46,8 +63,8 @@ android {
         // Flag to enable support for the new language APIs
         coreLibraryDesugaringEnabled true
         // Sets Java compatibility to Java 11
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     if (project.android.hasProperty('namespace')) {
         namespace 'net.touchcapture.qr.flutterqr'
